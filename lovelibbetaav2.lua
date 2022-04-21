@@ -237,7 +237,7 @@ linstance.create = function(self,name,props)
 					(secure_load and "Sentinel") or
 					(is_sirhurt_closure and "Sirhurt") or
 					(pebc_execute and "ProtoSmasher") or
-					(KRNL_LOADED and "Krnl     ") or
+					(KRNL_LOADED and "Krnl") or
 					(WrapGlobal and "WeAreDevs") or
 					(isvm and "Proxo") or
 					(shadow_env and "Shadow") or
