@@ -155,7 +155,7 @@ linstance.create = function(self,name,props)
 		header.BorderSizePixel = 0
 		header.Position = UDim2.new(0.5, 0, 0, 0)
 		header.Size = UDim2.new(1, 0, 0, 100)
-		header.Image = "rbxassetid://9414405253"
+		header.Image = "http://www.roblox.com/asset/?id=9423924419"
 		header.ScaleType = Enum.ScaleType.Crop
 
 		UIListLayout.Parent = header
@@ -880,6 +880,7 @@ lib.new = function(self)
 				else
 					TweenService:Create(checkbox.checkbox.cover,atween,{ImageTransparency=1}):Play()
 				end
+				callback(toggled)
 			end)
 		end
 		
