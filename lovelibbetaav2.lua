@@ -812,7 +812,7 @@ linstance.create = function(self,name,props)
 		TextLabel_2.Size = UDim2.new(1, 0, 1, 0)
 		TextLabel_2.ZIndex = 2
 		TextLabel_2.Font = Enum.Font.Gotham
-		TextLabel_2.Text = "20"
+		TextLabel_2.Text = props.default or "0"
 		TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
 		TextLabel_2.TextSize = 12.000
 
@@ -1201,7 +1201,7 @@ lib.new = function(self)
 
 		plib.addslider = function(self,title,default,min,max,inc,callback,desc)
 			innum=innum+1
-			local slider = linstance:create("slider",{title=title,desc=desc,glib=glib})
+			local slider = linstance:create("slider",{title=title,desc=desc,glib=glib,default=default})
 			slider.LayoutOrder = innum
 			slider.Parent = page.ScrollingFrame
 			local button = slider.Frame.slide.TextButton
