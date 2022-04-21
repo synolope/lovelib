@@ -1209,6 +1209,15 @@ lib.new = function(self)
 			local totalsize = slider.Frame.slide.AbsoluteSize
 			local dragtomouse,mousestart,slidestart = nil,Vector2.new(Mouse.X,Mouse.Y),slider.Frame.slide.Frame.slide.AbsoluteSize
 
+			local dratio = default/max
+			if dratio < .02 then
+				dratio = .02
+			elseif dratio > 1 then
+				dratio = 1
+			end
+
+			slider.Frame.slide.Frame.slide.Size = UDim2.fromScale(dratio,1)
+
 			button.MouseButton1Down:Connect(function()
 				if dragtomouse then
 					dragtomouse:Disconnect()
