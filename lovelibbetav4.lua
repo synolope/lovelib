@@ -384,7 +384,7 @@ linstance.create = function(self,name,props)
 		
 
 
-		return ScreenGui
+		return ScreenGui,mfsize,mfabssize
 	elseif name == "tbutton" then
 		-- Gui to Lua
 		-- Version: 3.2
@@ -1214,7 +1214,6 @@ linstance.create = function(self,name,props)
 		--Properties:
 
 		textbox.Name = "textbox"
-		textbox.Parent = game.StarterGui.ScreenGui.Frame.body.pagecontainer.page.ScrollingFrame
 		textbox.BackgroundColor3 = Color3.fromRGB(24, 24, 24)
 		textbox.Size = UDim2.new(1, 0, 0, 34)
 
@@ -1396,7 +1395,7 @@ end
 lib.new = function(self)
 	local glib = {}	
 
-	local gui = linstance:create("gui")
+	local gui,mfsize,mfabssize = linstance:create("gui")
 	pcall(function()
 		gui.Parent = game.CoreGui
 	end)
@@ -1549,6 +1548,7 @@ lib.new = function(self)
 				mousestart = Vector2.new(Mouse.X,Mouse.Y)
 				slidestart =  mousestart - (slider.Frame.slide.Frame.slide.AbsolutePosition)
 				dragtomouse = game:GetService("RunService").Heartbeat:Connect(function()
+					local totalsize = slider.Frame.slide.AbsoluteSize
 					local mousepos = Vector2.new(Mouse.X,Mouse.Y)
 					local diff = mousepos-mousestart
 					local newsize = slidestart+diff
