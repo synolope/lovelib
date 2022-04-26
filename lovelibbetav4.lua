@@ -1506,11 +1506,12 @@ lib.new = function(self)
 
 		plib.addcheckbox = function(self,title,default,callback,desc)
 			innum=innum+1
-			local toggled = default
+			local toggled = false
 			local checkbox = linstance:create("checkbox",{title=title,desc=desc,glib=glib})
 			checkbox.LayoutOrder = innum
 			checkbox.Parent = page.ScrollingFrame
-			checkbox.checkbox.TextButton.MouseButton1Down:Connect(function()
+
+			local function runt()
 				toggled = not toggled
 				if toggled then
 					TweenService:Create(checkbox.checkbox.cover,atween,{ImageTransparency=0}):Play()
@@ -1518,7 +1519,13 @@ lib.new = function(self)
 					TweenService:Create(checkbox.checkbox.cover,atween,{ImageTransparency=1}):Play()
 				end
 				runcallback(callback,toggled)
-			end)
+			end
+
+			checkbox.checkbox.TextButton.MouseButton1Down:Connect(runt)
+
+			if default then
+				runt()
+			end
 		end
 
 		plib.addslider = function(self,title,default,min,max,inc,callback,desc)
